@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.article_id = params[:article_id]
         
-        @comment.save
+        flash.notice = "Comment posted!" if @comment.save
         
         redirect_to article_path(@comment.article)
     end
